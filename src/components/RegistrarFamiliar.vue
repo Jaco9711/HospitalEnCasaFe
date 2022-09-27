@@ -4,14 +4,14 @@
         <div class="container_RegistroFamiliar">
         <form>
             <label>
-                ID familiar:
+                Nombre de usuario del familiar:
             </label>
-            <input type="number" placeholder="Ingrese el ID del familiar" required>
+            <input  type="text" placeholder="Username">  
             <br>
             <label>
                 Correo Electronico:
             </label>
-            <input type="text" placeholder="Correo Electronico">
+            <input  type="text" placeholder="Correo Electronico">
             <br>     
             <label>
                 Parentesco:
@@ -23,10 +23,7 @@
             </label>
             <input type="number" placeholder="Ingrese el ID del paciente" required>         
             <br>   
-            <label>
-                Nombre de usuario del familiar:
-            </label>
-            <input type="text" placeholder="Username">            
+          
             <br>                    
             <br>
             <button class="btn-reg">Registrar</button>    
@@ -34,6 +31,10 @@
     </div>
 </div>
 </template>
+<script>
+
+</script>
+
 <style>
     .RegistroFamiliar{
         margin: 0;
