@@ -9,12 +9,12 @@
         <form v-on:submit.prevent="processRegitroPersonalSalud">
             <br>
             <label  id="ps_username">Usuario:
-            <input v-model="psalud.ps_username" type="text" placeholder="Usuario" required>
+            <input  type="text" placeholder="Usuario" required>
             </label>
             <br>
             <br>
             <label>Rol:
-            <select v-model="psalud.ps_rol" id="ps_rol">
+            <select  id="ps_rol">
                 <option>Médico(a)</option>
                 <option>Enfermero(a)</option>
             </select>
@@ -22,7 +22,7 @@
             <br>
             <br>
             <label id="ps_especialidad">Perfil:
-            <input v-model="psalud.ps_especialidad" type="text" placeholder="Especialidad" required>
+            <input type="text" placeholder="Especialidad" required>
             </label>
             <br>
             <br>
@@ -32,37 +32,6 @@
         </div>
     </div>
 </template>
-
-<script>
-    import axios from 'axios';
-    export default { 
-        data:function(){
-            return{
-                psalud:{
-                    ps_username:"",
-                    ps_rol:"",
-                    ps_especialidad:""
-                }
-            }
-        },
-    
-        methods:{
-            processRegitroPersonalSalud:function(){
-                
-                axios.post("https://hos-casa-fe.herokuapp.com/psalud/", this.psalud,{headers:{}})
-                
-                .then((result)=>{
-                    alert("Registro Exitoso");
-    
-                }).catch((error)=>{
-                    console.log(error)
-                    alert("Error: fallo el registro");
-    
-                })
-            }
-        }
-    }
-    </script>
 
 <style>
 .RegistroPersonalSalud{
