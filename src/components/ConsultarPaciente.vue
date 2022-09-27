@@ -81,7 +81,7 @@
 
               }).catch((error)=>{
                   console.log(error);
-                  alert("El paciente no existe")
+                  alert("El id del paciente no existe")
 
               });
             }
