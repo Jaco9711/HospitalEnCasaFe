@@ -4,19 +4,19 @@
         <div class="container_RegistroFamiliar">
         <form>
             <label>
-                Nombre de usuario del familiar:
+                Usuario:
             </label>
-            <input  type="text" placeholder="Username">  
+            <input  type="text" placeholder="Username" required>  
             <br>
             <label>
                 Correo Electronico:
             </label>
-            <input  type="text" placeholder="Correo Electronico">
+            <input  type="text" placeholder="Correo Electronico" required>
             <br>     
             <label>
                 Parentesco:
             </label>
-            <input type="text" placeholder="Parentesco">                 
+            <input type="text" placeholder="Parentesco" required>                 
             <br>               
             <label>
                 ID del paciente:

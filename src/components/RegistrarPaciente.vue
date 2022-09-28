@@ -3,13 +3,13 @@
     <div class="RegistroPaciente">
         <div class="container_RegistroPaciente">
             <form>
-                <label id="p_username">Nombre Usuario:
-                <input type="text" placeholder="Usuario" required>
+                <label id="p_username">Usuario:
+                <input type="text" placeholder="Username" required>
                 </label>
                 <br>
                 <br>
                 <label>ID Personal de Salud Asignado
-                <input type="Number" id="p_personal_salud" placeholder="ID PSalud">
+                <input type="Number" id="p_personal_salud" placeholder="ID PSalud" required>
                 </label>
                 <br>
                 <br>
@@ -19,7 +19,7 @@
                 <br>
                 <br>
                 <label>Ciudad
-                <select id="p_ciudad">
+                <select id="p_ciudad" required>
                 <option>           </option>
                 <option>Bogota D.C </option>
                 <option>Medellin </option>
@@ -35,12 +35,12 @@
                 <br>
                 <br>
                 <label id="p_latitud">Latitud:
-                <input type="text" placeholder="Grados°/Min/Seg" required>
+                <input type="text" placeholder="Grados°/Min/Seg">
                 </label>
                 <br>
                 <br>
                 <label id="p_longitud">Longitud:
-                <input type="text" placeholder="Longitud" required>
+                <input type="text" placeholder="Longitud">
                 </label>
                 <br>
                 <br>

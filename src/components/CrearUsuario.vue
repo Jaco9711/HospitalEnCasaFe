@@ -4,30 +4,39 @@
         <div class="container_RegistroUsuario">
         <form v-on:submit.prevent="processCreateUser">
             <label>
-                Username:
+                Usuario:
             </label>
-            <input type="text" v-model="user.u_username" placeholder="Username">
+            <input type="text" v-model="user.u_username" placeholder="Username" required>
             <br>
             <label>
                 Password:
             </label>
-            <input v-model="user.password" type="Password">  
+            <input v-model="user.password" type="Password" required>  
             <br>     
             <label>
                 Nombres:
             </label>
-            <input v-model="user.u_nombres" type="text" placeholder="Nombres">                 
+            <input v-model="user.u_nombres" type="text" placeholder="Nombres" required>                 
             <br>               
             <label>
                 Apellidos:
             </label>
-            <input type="text" v-model="user.u_apellidos" placeholder="Apellidos">            
+            <input type="text" v-model="user.u_apellidos" placeholder="Apellidos" required>            
             <br>   
             <label>
                 Telefono:
             </label>
-            <input type="text" v-model="user.u_telefono" placeholder="Telefono">            
-            <br>               
+            <input type="text" v-model="user.u_telefono" placeholder="Telefono" required>            
+            <br>   
+            <label>
+                Perfil:
+            </label>
+            <select v-model="user.u_perfil" id="u_perfil" required>
+                <option>Personal Salud</option>
+                <option>Familiar</option>
+                <option>Paciente</option>
+            </select>     
+            <br>            
             <label>
                 Genero:
             </label>
@@ -50,7 +59,7 @@ export default {
             user:{
                 u_username:"",
                 password:"",
-                u_perfil: "this",
+                u_perfil: "",
                 u_nombres: "",
                 u_apellidos: "",
                 u_telefono: "",
@@ -70,7 +79,7 @@ export default {
 
             }).catch((error)=>{
                 console.log(error)
-                alert("Error: fallo el registro");
+                alert("Error: falló el registro");
 
             })
         }

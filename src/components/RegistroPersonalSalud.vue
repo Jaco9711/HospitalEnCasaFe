@@ -6,32 +6,63 @@
     </div>
     <div class="RegistroPersonalSalud">
         <div class="container_RegistroPersonalSalud">
-        <form v-on:submit.prevent="processRegitroPersonalSalud">
+            <form v-on:submit.prevent="processRegitroPersonalSalud">
+                <br>
+                <label  id="ps_username">Usuario:
+                <input  type="text" v-model="personalSalud.ps_username" placeholder="Username" required>
+                </label>
+                <br>
+                <br>
+                <label>Rol:
+                <select  id="ps_rol" v-model="personalSalud.ps_rol">
+                    <option>Médico(a)</option>
+                    <option>Enfermero(a)</option>
+                </select>
+                </label>
+                <br>
+                <br>
+                <label id="ps_especialidad">Perfil:
+                <input type="text" v-model="personalSalud.ps_especialidad" placeholder="Especialidad" required>
+                </label>
+                <br>
+                <br>
+                <button>Registrar</button> 
+            </form>
             <br>
-            <label  id="ps_username">Usuario:
-            <input  type="text" placeholder="Usuario" required>
-            </label>
-            <br>
-            <br>
-            <label>Rol:
-            <select  id="ps_rol">
-                <option>Médico(a)</option>
-                <option>Enfermero(a)</option>
-            </select>
-            </label>
-            <br>
-            <br>
-            <label id="ps_especialidad">Perfil:
-            <input type="text" placeholder="Especialidad" required>
-            </label>
-            <br>
-            <br>
-            <button>Registrar</button> 
-        </form>
-        <br>
         </div>
     </div>
 </template>
+
+<script>
+import axios from 'axios';
+export default { 
+    data:function(){
+        return{
+            personalSalud:{
+                ps_username:"",
+                ps_rol:"",
+                ps_especialidad:"",
+            }
+        }
+    },
+
+    methods:{
+        processRegitroPersonalSalud:function(){
+            
+            axios.post("https://hos-casa-fe.herokuapp.com/psalud/", this.personalSalud,{headers:{}})
+            
+            .then((result)=>{
+                alert("Registro Exitoso");
+
+            }).catch((error)=>{
+                console.log(error)
+                alert("Error: falló el registro");
+
+            })
+        }
+    }
+}
+</script>
 
 <style>
 .RegistroPersonalSalud{
