@@ -9,7 +9,7 @@
             <form v-on:submit.prevent="processConsultaPaciente">
                 <br>
                 <label id="p_id">Ingrese el ID del paciente:
-                <input  type="number" placeholder="ID del paciente" required>
+                <input v-model="p_id" type="number" placeholder="ID del paciente" required>
                 </label>
                 <br>
                 <br>
@@ -25,8 +25,8 @@
         <br>
             <table>
                 <tr>
-                    <td>Username:</td>
-                    <td>{{name}}</td>
+                    <td>Usuario:</td>
+                    <td>{{p_username}}</td>
                 </tr>
                 <tr>
                     <td>Médico asignado:</td>
@@ -58,7 +58,35 @@
 </template>
 
 <script>
+import axios from 'axios';
+export default{
+    data:function(){
+        return{
+            p_username:""
+        }
+    },
 
+    methods:{
+        processConsultaPaciente:function(){
+            axios.get(`https://hos-casa-fe.herokuapp.com/paciente/${this.p_id}/`)
+
+            .then((result)=>{
+            this.p_username= result.data.p_username;
+            this.p_personal_salud = result.data.p_personal_salud;
+            this.p_fecha_nacimiento = result.data.p_fecha_nacimiento;
+            this.p_ciudad = result.data.p_ciudad;
+            this.p_direccion = result.data.p_direccion;
+            this.p_latitud = result.data.p_latitud;
+            this.p_longitud = result.data.p_longitud;
+            })
+            
+            .catch((error)=>{
+                console.log(error);
+                alert("El ID de paciente ingresado no existe")
+            });                       
+        }
+    }
+}
 </script>
 
 <style>
