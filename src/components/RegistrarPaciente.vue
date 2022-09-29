@@ -2,24 +2,24 @@
     <h1>Registrar Paciente</h1>
     <div class="RegistroPaciente">
         <div class="container_RegistroPaciente">
-            <form>
+            <form v-on:submit.prevent="processCreatePaciente">
                 <label id="p_username">Usuario:
-                <input type="text" placeholder="Username" required>
+                <input type="text" v-model="user.p_username" placeholder="Username" required>
                 </label>
                 <br>
                 <br>
                 <label>ID Personal de Salud Asignado
-                <input type="Number" id="p_personal_salud" placeholder="ID PSalud" required>
+                <input type="Number" v-model="user.p_personal_salud" placeholder="ID PSalud" required>
                 </label>
                 <br>
                 <br>
                 <label id="p_fecha_nacimiento">Fecha Nacimiento:
-                <input type="text" placeholder="Dia/Mes/Año" required>
+                <input type="text" v-model="user.p_fecha_nacimiento" placeholder="Año-Mes-Dia" required>
                 </label>
                 <br>
                 <br>
                 <label>Ciudad
-                <select id="p_ciudad" required>
+                <select id="p_ciudad" v-model="user.p_ciudad" required>
                 <option>           </option>
                 <option>Bogota D.C </option>
                 <option>Medellin </option>
@@ -30,17 +30,17 @@
                 <br>
                 <br>
                 <label id="p_direccion">Dirección del paciente:
-                <input type="text" placeholder="Barrio-Carrera-Calle-Numero" required>
+                <input type="text" v-model="user.p_direccion" placeholder="Barrio-Carrera-Calle-Numero" required>
                 </label>
                 <br>
                 <br>
                 <label id="p_latitud">Latitud:
-                <input type="text" placeholder="Grados°/Min/Seg">
+                <input type="text" v-model="user.p_latitud" placeholder="Grados°/Min/Seg">
                 </label>
                 <br>
                 <br>
                 <label id="p_longitud">Longitud:
-                <input type="text" placeholder="Longitud">
+                <input type="text" v-model="user.p_longitud" placeholder="Longitud">
                 </label>
                 <br>
                 <br>
@@ -51,7 +51,42 @@
          </div>
      </div>       
 </template>
-<!--esto pues son los colores jaja-->
+<script>
+    import axios from 'axios';
+    export default { 
+        data:function(){
+            return{
+                user:{ 
+                    p_username:"",
+                    p_personal_salud:"",
+                    p_fecha_nacimiento: "",
+                    p_ciudad: "",
+                    p_direccion: "",
+                    p_latitud: "",
+                    p_longitud:""
+
+                }
+            }
+        },
+    
+        methods:{
+            processCreatePaciente:function(){
+                
+                axios.post("https://hos-casa-fe.herokuapp.com/regpaciente/",this.user,{headers:{}})
+                
+                .then((result)=>{
+                    alert("Registro Exitoso");
+    
+                }).catch((error)=>{
+                    console.log(error)
+                    alert("Error: falló el registro");
+    
+                })
+            }
+        }
+    }
+    </script>
+
 <style>
     .RegistroPaciente{
         margin: 0;
