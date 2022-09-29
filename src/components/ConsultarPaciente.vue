@@ -9,7 +9,7 @@
             <form v-on:submit.prevent="processConsultaPaciente">
                 <br>
                 <label id="p_id">Ingrese el ID del paciente:
-                <input v-model="p_id" type="number" placeholder="ID del paciente" required>
+                <input v-model="paciente.p_id" type="number" placeholder="ID del paciente" required>
                 </label>
                 <br>
                 <br>
@@ -62,13 +62,22 @@ import axios from 'axios';
 export default{
     data:function(){
         return{
-            p_username:""
+            paciente:{
+                p_id:""
+            },
+            p_username:"",
+            p_personal_salud:"",
+            p_fecha_nacimiento:"",
+            p_ciudad:"",
+            p_direccion:"",
+            p_latitud:"",
+            p_longitud:""
         }
     },
 
     methods:{
         processConsultaPaciente:function(){
-            axios.get(`https://hos-casa-fe.herokuapp.com/paciente/${this.p_id}/`)
+            axios.get(`https://hos-casa-fe.herokuapp.com/paciente/${this.paciente.p_id}/`)
 
             .then((result)=>{
             this.p_username= result.data.p_username;
