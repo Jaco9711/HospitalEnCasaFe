@@ -2,26 +2,26 @@
     <h1>Registrar Familiar</h1>
     <div class="RegistroFamiliar">
         <div class="container_RegistroFamiliar">
-        <form>
+        <form v-on:submit.prevent="processCreateUser">
             <label>
                 Usuario:
             </label>
-            <input  type="text" placeholder="Username" required>  
+            <input  type="text" v-model="user.f_username" placeholder="Username" required>  
             <br>
             <label>
                 Correo Electronico:
             </label>
-            <input  type="text" placeholder="Correo Electronico" required>
+            <input  type="text"  v-model="user.f_correo"  placeholder="Correo Electronico" required>
             <br>     
             <label>
                 Parentesco:
             </label>
-            <input type="text" placeholder="Parentesco" required>                 
+            <input type="text" v-model="user.f_parentesco" placeholder="Parentesco" required>                 
             <br>               
             <label>
                 ID del paciente:
             </label>
-            <input type="number" placeholder="Ingrese el ID del paciente" required>         
+            <input type="number" v-model="user.f_paciente" placeholder="Ingrese el ID del paciente" required>         
             <br>   
           
             <br>                    
@@ -31,8 +31,37 @@
     </div>
 </div>
 </template>
-<script>
 
+<script>
+import axios from 'axios';
+export default { 
+    data:function(){
+        return{
+            user:{
+                f_username:"",
+                f_correo:"",
+                f_parentesco: "",
+                f_paciente: ""
+            }
+        }
+    },
+
+    methods:{
+        processCreateUser:function(){
+            
+            axios.post("https://hos-casa-fe.herokuapp.com/regfamiliar/", this.user,{headers:{}})
+            
+            .then((result)=>{
+                alert("Registro Exitoso");
+
+            }).catch((error)=>{
+                console.log(error)
+                alert("Error: falló el registro");
+
+            })
+        }
+    }
+}
 </script>
 
 <style>
